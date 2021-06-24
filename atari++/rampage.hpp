@@ -38,13 +38,13 @@ public:
   // Read a byte. Returns the byte read.
   UBYTE ReadByte(ADR mem)
   {
-    return memory[mem & PAGE_MASK];
+    return memory[mem & ATARIPP_PAGE_MASK];
   }
   //
   // Write a byte to a page.
   void WriteByte(ADR mem,UBYTE val)
   {
-    memory[mem & PAGE_MASK] = val;
+    memory[mem & ATARIPP_PAGE_MASK] = val;
   }
   //
   // The following "complex" functions should never be called since the page
@@ -53,19 +53,19 @@ public:
   // Read a byte. Returns the byte read.
   UBYTE ComplexRead(ADR mem)
   {
-    return memory[mem & PAGE_MASK];
+    return memory[mem & ATARIPP_PAGE_MASK];
   }
   //
   // Write a byte to a page.
   void ComplexWrite(ADR mem,UBYTE val)
   {
-    memory[mem & PAGE_MASK] = val;
+    memory[mem & ATARIPP_PAGE_MASK] = val;
   }  
   //
   // Patch a byte into a RAM. 
   virtual void PatchByte(ADR mem,UBYTE val)
   {
-    memory[mem & PAGE_MASK] = val;
+    memory[mem & ATARIPP_PAGE_MASK] = val;
   }  
   //
   // Blank a rampage to all zeros: This initializes a page

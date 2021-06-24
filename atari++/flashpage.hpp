@@ -34,7 +34,7 @@ protected:
   //
   virtual UBYTE ComplexRead(ADR mem)
   {
-    UBYTE b = romimage[mem & PAGE_MASK];
+    UBYTE b = romimage[mem & ATARIPP_PAGE_MASK];
     //
     if (parent->InterceptsRead()) {
       return parent->RomAreaRead(mem,b);
@@ -76,7 +76,7 @@ public:
   // Read a byte. Returns the byte read.
   UBYTE ReadByte(ADR mem)
   {
-    return romimage[mem & PAGE_MASK];
+    return romimage[mem & ATARIPP_PAGE_MASK];
   }
   //
   // Write a byte to a page. Nothing happens here.
@@ -94,7 +94,7 @@ public:
   // Patch a byte into a FlashROM.
   virtual void PatchByte(ADR mem,UBYTE val)
   {
-    romimage[mem & PAGE_MASK] = val;
+    romimage[mem & ATARIPP_PAGE_MASK] = val;
   }
 };
 ///

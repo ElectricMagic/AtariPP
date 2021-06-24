@@ -28,7 +28,7 @@ protected:
   //
   virtual UBYTE ComplexRead(ADR mem)
   {
-    return romimage[mem & PAGE_MASK];
+    return romimage[mem & ATARIPP_PAGE_MASK];
   }
   //
   virtual void ComplexWrite(ADR,UBYTE)
@@ -54,7 +54,7 @@ public:
   // Read a byte. Returns the byte read.
   UBYTE ReadByte(ADR mem)
   {
-    return romimage[mem & PAGE_MASK];
+    return romimage[mem & ATARIPP_PAGE_MASK];
   }
   //
   // Write a byte to a page.
@@ -71,7 +71,7 @@ public:
   // Patch a byte into a ROM. 
   virtual void PatchByte(ADR mem,UBYTE val)
   {
-    romimage[mem & PAGE_MASK] = val;
+    romimage[mem & ATARIPP_PAGE_MASK] = val;
   }
   //
   // Return an indicator whether this is an I/O area or not.

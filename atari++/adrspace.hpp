@@ -43,7 +43,7 @@ public:
   void MapPage(ADR mem,class Page *page)
   {
 #if CHECK_LEVEL > 2
-    if ((mem & PAGE_MASK) != 0)
+    if ((mem & ATARIPP_PAGE_MASK) != 0)
       Throw(InvalidParameter,"Page::MapPage","Page address is not aligned");
 #endif
     pages[mem >> PAGE_SHIFT] = page;

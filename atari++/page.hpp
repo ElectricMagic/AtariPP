@@ -17,7 +17,7 @@
 ///
 
 /// Defines
-#define PAGE_MASK 0xff // mask out the page from an address
+#define ATARIPP_PAGE_MASK 0xff // mask out the page from an address
 #define PAGE_SHIFT 0x08 // shift to get the page index
 #define PAGE_LENGTH 0x100 // length of a page in bytes
 ///
@@ -59,7 +59,7 @@ public:
   UBYTE ReadByte(ADR mem)
   {
     if (memory) {
-      return memory[mem & PAGE_MASK];
+      return memory[mem & ATARIPP_PAGE_MASK];
     } else {
       return ComplexRead(mem);
     }
@@ -70,7 +70,7 @@ public:
   void WriteByte(ADR mem,UBYTE val)
   {
     if (memory) {
-      memory[mem & PAGE_MASK] = val;
+      memory[mem & ATARIPP_PAGE_MASK] = val;
     } else {
       ComplexWrite(mem,val);
     }
