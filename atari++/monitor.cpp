@@ -318,7 +318,7 @@ const struct Monitor::Symbol *Monitor::Symbol::FindSymbol(const struct Symbol *l
 	else
 	  continue;
 	break;
-      case Any:
+      case All:
 	score += 5;
 	break;
       case PreferZeroPage:
