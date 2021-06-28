@@ -22,11 +22,7 @@
 ///
 
 /// Compiler workarounds
-#ifdef HAS_LOCAL_TEMPLATES
-#define T(super,type) type
-#else
-#define T(super,type) super::type
-#endif
+
 #ifdef HAS_MEMBER_INIT
 #define INIT(a) = a
 #else

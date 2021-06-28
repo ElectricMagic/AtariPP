@@ -22,6 +22,13 @@
 #include "instruction.hpp"
 ///
 
+#ifdef HAS_LOCAL_TEMPLATES
+#define ATARIPP_TT(super,type) type
+#else
+#define ATARIPP_TT(super,type) super::type
+#endif
+
+
 /// Forward declarations
 class Monitor;
 class Patch;
@@ -383,7 +390,7 @@ public:
   // its operand. This is the second step in an (indirect,x) addressing mode.
   // It always adds one additional wait.
   class AddXUnitWait : public AtomicExecutionUnit<class AdrSpace> {
-    T(CPU,Cat1)<WaitUnit> Wait;
+    ATARIPP_TT(CPU,Cat1)<WaitUnit> Wait;
   public:
     AddXUnitWait(class CPU *cpu)
       : AtomicExecutionUnit<AdrSpace>(cpu), Wait(cpu)
@@ -415,7 +422,7 @@ public:
   // boundary is crossed. This is the second step in an absolute,X addressing
   // step.
   class AddXUnit : public AtomicExecutionUnit<class AdrSpace> {
-    T(CPU,Cat1)<WaitUnit> Wait;
+    ATARIPP_TT(CPU,Cat1)<WaitUnit> Wait;
   public:
     AddXUnit(class CPU *cpu)
       : AtomicExecutionUnit<AdrSpace>(cpu), Wait(cpu)
@@ -436,7 +443,7 @@ public:
   // its operand. This is the thrid step in an (indirect),y addressing mode
   // and *may* add a wait state.
   class AddYUnitWait : public AtomicExecutionUnit<class AdrSpace> {
-    T(CPU,Cat1)<WaitUnit> Wait;
+    ATARIPP_TT(CPU,Cat1)<WaitUnit> Wait;
   public:
     AddYUnitWait(class CPU *cpu)
       : AtomicExecutionUnit<AdrSpace>(cpu), Wait(cpu)
@@ -468,7 +475,7 @@ public:
   // its operand. This is the thrid step in an (indirect),y addressing mode
   // and *may* add a wait state.
   class AddYUnit : public AtomicExecutionUnit<class AdrSpace> {
-    T(CPU,Cat1)<WaitUnit> Wait;
+    ATARIPP_TT(CPU,Cat1)<WaitUnit> Wait;
   public:
     AddYUnit(class CPU *cpu)
       : AtomicExecutionUnit<AdrSpace>(cpu), Wait(cpu)
@@ -525,7 +532,7 @@ public:
   // The 65C02 fixes this behaivour
   class IndirectionUnitExtendFixed : public AtomicExecutionUnit<class AdrSpace> {
     // Used to create a wait-state
-    T(CPU,Cat1)<WaitUnit> Wait;
+    ATARIPP_TT(CPU,Cat1)<WaitUnit> Wait;
   public:
     IndirectionUnitExtendFixed(class CPU *cpu)
       : AtomicExecutionUnit<AdrSpace>(cpu), Wait(cpu)
@@ -1001,7 +1008,7 @@ public:
   class ADCUnitFixed : public AtomicExecutionUnit<class AdrSpace> {
     // The wait state we may insert here for the 65C02
     // in decimal mode.
-    T(CPU,Cat1)<WaitUnit> Wait;
+    ATARIPP_TT(CPU,Cat1)<WaitUnit> Wait;
   public:
     ADCUnitFixed(class CPU *cpu)
       : AtomicExecutionUnit<AdrSpace>(cpu), Wait(cpu)
@@ -1030,7 +1037,7 @@ public:
   class SBCUnitFixed : public AtomicExecutionUnit<class AdrSpace> { 
     // The wait state we may insert here for the 65C02
     // in decimal mode.
-    T(CPU,Cat1)<WaitUnit> Wait;
+    ATARIPP_TT(CPU,Cat1)<WaitUnit> Wait;
   public:
     SBCUnitFixed(class CPU *cpu)
       : AtomicExecutionUnit<AdrSpace>(cpu), Wait(cpu)
@@ -1101,7 +1108,7 @@ public:
   // be inserted directly, but it should be part of the BranchDetectUnit step.
   class BranchUnit : public AtomicExecutionUnit<class AdrSpace> {
     // The wait state we may insert here.
-    T(CPU,Cat1)<WaitUnit> Wait;
+    ATARIPP_TT(CPU,Cat1)<WaitUnit> Wait;
   public:
     BranchUnit(class CPU *cpu)
       : AtomicExecutionUnit<AdrSpace>(cpu), Wait(cpu)
@@ -1115,7 +1122,7 @@ public:
   // may or may not insert additional steps.
   template<UBYTE mask,UBYTE value>
   class BranchDetectUnit : public AtomicExecutionUnit<class AdrSpace> {
-    T(CPU,Cat1)<BranchUnit> Branch;
+    ATARIPP_TT(CPU,Cat1)<BranchUnit> Branch;
   public:
     BranchDetectUnit(class CPU *cpu)
       : AtomicExecutionUnit<AdrSpace>(cpu), Branch(cpu)
@@ -1127,8 +1134,8 @@ public:
   // The BranchBitTestUnit, used for the Rockwell BBR/BBS instructions.
   template<UBYTE bitmask,UBYTE bitvalue>
   class BranchBitTestUnit : public AtomicExecutionUnit<class AdrSpace> {
-    T(CPU,Cat1)<BranchUnit> Branch;
-    T(CPU,Cat1)<WaitUnit>   Wait;
+    ATARIPP_TT(CPU,Cat1)<BranchUnit> Branch;
+    ATARIPP_TT(CPU,Cat1)<WaitUnit>   Wait;
   public:
     BranchBitTestUnit(class CPU *cpu)
       : AtomicExecutionUnit<AdrSpace>(cpu), Branch(cpu), Wait(cpu)
@@ -1695,5 +1702,8 @@ public:
 ///
 
 ///
+
+#undef ATARIPP_TT
+
 #endif
     
