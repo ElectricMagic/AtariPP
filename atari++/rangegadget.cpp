@@ -29,7 +29,7 @@ RangeGadget::RangeGadget(List<Gadget> &gadgetlist,
     Min(min), Max(max), Setting(setting)
 {
   te    += 12;
-  snprintf(Buffer,12,LD,setting);
+  snprintf(Buffer,12,ATARIPP_LD,setting);
   //
   // Pick a sensible representation. If there are too many choices, make it also
   // editable by a string gadget.
@@ -78,13 +78,13 @@ bool RangeGadget::HitTest(struct Event &ev)
       }
       // Restore the old value
       delete[] buffer;
-      snprintf(Buffer,12,LD,Setting);
+      snprintf(Buffer,12,ATARIPP_LD,Setting);
       String->SetContents(Buffer);
     }
     return true;
   } else if (Slider->HitTest(ev)) {
     Setting = Slider->TopEntry(Slider->GetProp(),1,Max - Min + 1) + Min;
-    snprintf(Buffer,12,LD,Setting);
+    snprintf(Buffer,12,ATARIPP_LD,Setting);
     if (Text)
       Text->Refresh();
     if (String)
@@ -104,7 +104,7 @@ bool RangeGadget::HitTest(struct Event &ev)
 void RangeGadget::Refresh(void)
 {
   Setting = Slider->TopEntry(Slider->GetProp(),1,Max - Min + 1) + Min;
-  snprintf(Buffer,12,LD,Setting);
+  snprintf(Buffer,12,ATARIPP_LD,Setting);
   GadgetGroup::Refresh();
 }
 ///
@@ -115,7 +115,7 @@ void RangeGadget::SetStatus(LONG value)
 {
   Slider->SetProp(Slider->PropPosition(value-Min,1,Max-Min+1));
   Setting = value;
-  snprintf(Buffer,12,LD,value);
+  snprintf(Buffer,12,ATARIPP_LD,value);
   if (Text)
     Text->Refresh();
   if (String)

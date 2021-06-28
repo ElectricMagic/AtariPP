@@ -1045,10 +1045,10 @@ void SIO::DisplayStatus(class Monitor *mon)
 
   mon->PrintStatus("SIO Status:\n"
 		   "\tSIO Status : %s\n"
-		   "\tSIO SerIn Command Delay: " LD "\n"		   
-		   "\tSIO Read Done Delay    : " LD "\n"
-		   "\tSIO Write Done Delay   : " LD "\n"
-		   "\tSIO Format Done Delay  : " LD "\n"
+		   "\tSIO SerIn Command Delay: " ATARIPP_LD "\n"
+		   "\tSIO Read Done Delay    : " ATARIPP_LD "\n"
+		   "\tSIO Write Done Delay   : " ATARIPP_LD "\n"
+		   "\tSIO Format Done Delay  : " ATARIPP_LD "\n"
 		   "\tSIO Command Frame Idx  : %d\n"
 		   "\tSIO Data Frame Idx     : %d\n"
 		   "\tCommand Frame Contents : %02x %02x %02x %02x\n",

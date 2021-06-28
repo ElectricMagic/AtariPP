@@ -253,7 +253,7 @@ void XEExtension::DisplayStatus(class Monitor *monitor)
 
   monitor->PrintStatus("\tXE banks CPU access     : %s\n"
 		       "\tXE banks ANTIC access   : %s\n"
-		       "\tXE number of banks bits : " LD "\n"
+		       "\tXE number of banks bits : " ATARIPP_LD "\n"
 		       "\tXE PIA Port B bank mask : 0x%02x\n"
 		       "\tXE active bank          : %d\n",
 		       (CPUAccess)?("on"):("off"),

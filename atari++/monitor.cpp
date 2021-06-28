@@ -1152,7 +1152,7 @@ bool Monitor::Command::GetDefault(int &setting,int def,int min,int max)
 	valid   = true;
 	setting = value;
       } else {
-	Print(LD " is out of range, must be >= %d and <= %d.\n",value,min,max);
+	Print(ATARIPP_LD " is out of range, must be >= %d and <= %d.\n",value,min,max);
       }
     } else {
       Print("%s is not a valid number.\n",token);
@@ -1284,9 +1284,9 @@ int Monitor::Command::ReadDataLine(UBYTE *buffer,const char *prompt,char mode,bo
 	  count++;
 	} else {
 	  if (base == 10) {
-	    Print("Input " LD " is not a valid byte.\n",value);
+	    Print("Input " ATARIPP_LD " is not a valid byte.\n",value);
 	  } else {
-	    Print("Input " LX " is not a valid byte.\n",(ULONG)(value));
+	    Print("Input " ATARIPP_LX " is not a valid byte.\n",(ULONG)(value));
 	  }
 	  return 0;
 	}
@@ -1469,7 +1469,7 @@ void Monitor::Eval::Apply(char e)
     if (token) {
       valid = monitor->EvaluateExpression(token,value);
       if (valid) {
-	Print("%s = 0x" LX " = " LD "\n",token,value,value);
+	Print("%s = 0x" ATARIPP_LX " = " ATARIPP_LD "\n",token,value,value);
       }
       return;
     }
@@ -2648,36 +2648,36 @@ void Monitor::SetR::Apply(char e)
     value     = 0;
     if (monitor->EvaluateExpression(valstr,value)) {
       if (value<0x0000 || value > 0xffff) {
-	Print("Register value " LX " out of range\n",(ULONG)value);
+	Print("Register value " ATARIPP_LX " out of range\n",(ULONG)value);
 	return;
       }
       if (!strcasecmp(setstr,"A")) {
 	if (value > 0xff) {
-	  Print("Register value " LX " out of range\n",(ULONG)value);
+	  Print("Register value " ATARIPP_LX " out of range\n",(ULONG)value);
 	  return;
 	}
 	monitor->cpu->A() = UBYTE(value);
       } else if (!strcasecmp(setstr,"X")) {
 	if (value > 0xff) {
-	  Print("Register value " LX " out of range\n",(ULONG)value);
+	  Print("Register value " ATARIPP_LX " out of range\n",(ULONG)value);
 	  return;
 	}
 	monitor->cpu->X() = UBYTE(value);
       } else if (!strcasecmp(setstr,"Y")) {
 	if (value > 0xff) {
-	  Print("Register value " LX " out of range\n",(ULONG)value);
+	  Print("Register value " ATARIPP_LX " out of range\n",(ULONG)value);
 	  return;
 	}
 	monitor->cpu->Y() = UBYTE(value);
       } else if (!strcasecmp(setstr,"S")) {
 	if (value > 0xff) {
-	  Print("Register value " LX " out of range\n",(ULONG)value);
+	  Print("Register value " ATARIPP_LX " out of range\n",(ULONG)value);
 	  return;
 	}
 	monitor->cpu->S() = UBYTE(value);
       } else if (!strcasecmp(setstr,"P")) {
 	if (value > 0xff) {
-	  Print("Register value " LX " out of range\n",(ULONG)value);
+	  Print("Register value " ATARIPP_LX " out of range\n",(ULONG)value);
 	  return;
 	}
 	monitor->cpu->P() = UBYTE(value);

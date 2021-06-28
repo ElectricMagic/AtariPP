@@ -1403,9 +1403,9 @@ void DiskDrive::DisplayStatus(class Monitor *mon)
 		     "\tImage file       : %s\n"
 		     "\tDisk format      : %s\n"
 		     "\tImage file format: %s\n"
-		     "\tSectors          : " LU "\n"
+		     "\tSectors          : " ATARIPP_LU "\n"
 		     "\tSector size      : %d\n"
-		     "\tSectors per track: " LU "\n",
+		     "\tSectors per track: " ATARIPP_LU "\n",
 		     drivetype,ImageName,disktype,imagetype,SectorCount,SectorSize,SectorsPerTrack);
   }
   mon->PrintStatus("\n");

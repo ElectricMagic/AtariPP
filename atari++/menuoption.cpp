@@ -248,7 +248,7 @@ bool OptionCollector::LongOption::ParseGadget(void)
 /// OptionCollector::LongOption::SaveOption
 void OptionCollector::LongOption::SaveOption(FILE *to)
 {
-  fprintf(to,"%s\t=\t" LD "\n",Name,Setting);
+  fprintf(to,"%s\t=\t" ATARIPP_LD "\n",Name,Setting);
 }
 ///
 

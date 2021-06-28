@@ -58,15 +58,15 @@ typedef unsigned int        UWORD;   /* an 16 bit unsigned integer */
 #if SIZEOF_LONG  == 4
 typedef signed long int     LONG;    /* an 32 bit signed integer */
 typedef unsigned long int   ULONG;   /* an 32 bit unsigned integer */
-#define LD "%ld"
-#define LX "%lx"
-#define LU "%lu"
+#define ATARIPP_LD "%ld"
+#define ATARIPP_LX "%lx"
+#define ATARIPP_LU "%lu"
 #elif SIZEOF_INT == 4
 typedef signed int          LONG;    /* an 32 bit signed integer */
 typedef unsigned int        ULONG;   /* an 32 bit unsigned integer */
-#define LD "%d"
-#define LX "%x"
-#define LU "%u"
+#define ATARIPP_LD "%d"
+#define ATARIPP_LX "%x"
+#define ATARIPP_LU "%u"
 #else
 # error "No 32 bit integer type available"
 #endif

@@ -176,8 +176,8 @@ void SnapShotWriter::DefineLong(const char *argname,const char *help,
     Throw(ObjectDoesntExist,"SnapShotWriter::DefineLong",
 	  "snapshot file or title missing");
 #endif
-  fprintf(File,"#%s (numeric between " LD " and " LD ")\n"
-	  "+%s::%s = " LD "\n",
+  fprintf(File,"#%s (numeric between " ATARIPP_LD " and " ATARIPP_LD ")\n"
+	  "+%s::%s = " ATARIPP_LD "\n",
 	  help,min,max,CurrentTopic,argname,var);
 }
 ///

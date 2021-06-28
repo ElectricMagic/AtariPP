@@ -75,7 +75,7 @@ void Cart32K::ReadFromFile(FILE *fp)
 void Cart32K::DisplayStatus(class Monitor *mon)
 {  
   mon->PrintStatus("Cart type inserted : %s\n"
-		   "Size of the cart   : " LD "K\n",
+		   "Size of the cart   : " ATARIPP_LD "K\n",
 		   CartType(),
 		   Size);
 }

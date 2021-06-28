@@ -483,7 +483,7 @@ void Printer::DisplayStatus(class Monitor *mon)
 		   "\tPrinter output queue is: %s\n"
 		   "\tPrinter is             : %s\n"
 		   "\tTranspose EOL->LF      : %s\n"
-		   "\tFlush delay is         : " LD "sec\n"
+		   "\tFlush delay is         : " ATARIPP_LD "sec\n"
 		   "\tPrint command is       : %s\n"
 		   "\tPrint target file is   : %s\n"
 		   "\tPrinting into          : %s\n"
