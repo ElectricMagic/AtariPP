@@ -49,6 +49,9 @@
 /* Define to 1 if initializers of static const integral members work */
 #undef HAS_MEMBER_INIT
 
+/* Define to 1 if the noexcept keyword is supported */
+#undef HAS_NOEXCEPT
+
 /* Define to 1 if OFDEL is a valid termios flag */
 #undef HAS_OFDEL_DEFINE
 

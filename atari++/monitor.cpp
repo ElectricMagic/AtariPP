@@ -2,7 +2,7 @@
  **
  ** Atari++ emulator (c) 2002 THOR-Software, Thomas Richter
  **
- ** $Id: monitor.cpp,v 1.104 2020/04/05 14:58:17 thor Exp $
+ ** $Id: monitor.cpp,v 1.107 2021/07/03 16:12:51 thor Exp $
  **
  ** In this module: Definition of the built-in monitor
  **********************************************************************************/
@@ -1272,7 +1272,8 @@ int Monitor::Command::ReadDataLine(UBYTE *buffer,const char *prompt,char mode,bo
     return count;
   case 'D':
     base = 10;
-    // runs into the following. Base defaults to 16 otherwise.
+    // Base defaults to 16 otherwise.
+    // Intentionally falls through.
   case 'X':
     while(*input) {
       LONG value;
@@ -2343,7 +2344,8 @@ void Monitor::Stat::Apply(char e)
       Print("Unknown emulator component %s\n",token);
       return;
     }
-    MissingArg();  
+    MissingArg();
+    break;
   default:
     ExtInvalid();   
   }
@@ -2383,7 +2385,7 @@ void Monitor::Edit::Apply(char e)
       do {
 	UBYTE *p;
 	int   count;
-	char  adbuffer[8];
+	char  adbuffer[9];
 	UBYTE buffer[128];
 	//
 	sprintf(adbuffer,"$%04x : ",here);
@@ -2744,7 +2746,7 @@ ADR Monitor::Dlst::DisassembleLine(class AdrSpace *adr,ADR where,char *line)
   bool load    = false;
   bool waitvbr = false;
   char cmdname[20],prehex[20];
-  char options[40];
+  char options[33];
 
   inst    = adr->ReadByte(where);
   if (inst & 0x80) {
@@ -2815,10 +2817,10 @@ ADR Monitor::Dlst::DisassembleLine(class AdrSpace *adr,ADR where,char *line)
     strcat(options," DLI");
   
   if (load) {
-    sprintf(line,"%s %s @$%04x %s",prehex,cmdname,adr->ReadWord(where+1),options);
+    snprintf(line,80,"%s %s @$%04x %s",prehex,cmdname,adr->ReadWord(where+1),options);
     where += 3;
   } else {
-    sprintf(line,"%s %s %s",prehex,cmdname,options);
+    snprintf(line,80,"%s %s %s",prehex,cmdname,options);
     where++;
   }
 
