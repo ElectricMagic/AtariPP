@@ -2,7 +2,7 @@
  **
  ** Atari++ emulator (c) 2002 THOR-Software, Thomas Richter
  **
- ** $Id: alsasound.cpp,v 1.37 2021/07/03 15:48:34 thor Exp $
+ ** $Id: alsasound.cpp,v 1.38 2021/08/16 10:31:01 thor Exp $
  **
  ** In this module: Os interface towards sound output for the alsa sound system
  **********************************************************************************/
@@ -638,13 +638,13 @@ void AlsaSound::DisplayStatus(class Monitor *mon)
   mon->PrintStatus("Audio Output Status:\n"
 		   "\tAudio output enable           : %s\n"
 		   "\tConsole speaker enable        : %s\n"
-		   "\tConsole speaker volume        : " LD "\n"
+		   "\tConsole speaker volume        : " ATARIPP_LD "\n"
 		   "\tAudio output card             : %s\n"
-		   "\tSampling frequency            : " LD "Hz\n"
-		   "\tFragment size exponent        : " LD "\n"
-		   "\tNumber of fragments           : " LD "\n"
-		   "\tNumber of frames in the queue : " LD "\n"
-		   "\tEffective sampling frequency  : " LD "Hz\n"
+		   "\tSampling frequency            : " ATARIPP_LD "Hz\n"
+		   "\tFragment size exponent        : " ATARIPP_LD "\n"
+		   "\tNumber of fragments           : " ATARIPP_LD "\n"
+		   "\tNumber of frames in the queue : " ATARIPP_LD "\n"
+		   "\tEffective sampling frequency  : " ATARIPP_LD "Hz\n"
 		   "\tChannel duplication           : %s\n"
 		   "\tStereo sound                  : %s\n"
 		   "\tChannel bit depth             : %d\n"
