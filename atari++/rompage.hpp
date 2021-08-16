@@ -28,7 +28,7 @@ protected:
   //
   virtual UBYTE ComplexRead(ADR mem)
   {
-    return romimage[mem & ATARIPP_PAGE_MASK];
+    return romimage[mem & Page::Page_Mask];
   }
   //
   virtual void ComplexWrite(ADR,UBYTE)
@@ -40,7 +40,7 @@ public:
   //
   // The constructor also constructs the memory here.
   RomPage(void)
-    : romimage(new UBYTE[256])
+    : romimage(new UBYTE[Page::Page_Length])
   { }
   //
   ~RomPage(void)
@@ -54,7 +54,7 @@ public:
   // Read a byte. Returns the byte read.
   UBYTE ReadByte(ADR mem)
   {
-    return romimage[mem & ATARIPP_PAGE_MASK];
+    return romimage[mem & Page::Page_Mask];
   }
   //
   // Write a byte to a page.
@@ -65,13 +65,13 @@ public:
   // Blank a rompage to all zeros
   void Blank(void)
   {
-    memset(romimage,0,256);
+    memset(romimage,0,Page::Page_Length);
   }  
   //
   // Patch a byte into a ROM. 
   virtual void PatchByte(ADR mem,UBYTE val)
   {
-    romimage[mem & ATARIPP_PAGE_MASK] = val;
+    romimage[mem & Page::Page_Mask] = val;
   }
   //
   // Return an indicator whether this is an I/O area or not.

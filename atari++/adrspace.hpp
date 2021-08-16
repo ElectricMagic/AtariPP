@@ -43,10 +43,10 @@ public:
   void MapPage(ADR mem,class Page *page)
   {
 #if CHECK_LEVEL > 2
-    if ((mem & ATARIPP_PAGE_MASK) != 0)
+    if ((mem & Page::Page_Mask) != 0)
       Throw(InvalidParameter,"Page::MapPage","Page address is not aligned");
 #endif
-    pages[mem >> PAGE_SHIFT] = page;
+    pages[mem >> Page::Page_Shift] = page;
   }
   //
   // Read and write from an address
@@ -56,10 +56,10 @@ public:
     if (mem < 0 || mem > 0xffff) {
       Throw(OutOfRange,"Page::ReadByte","Address is invalid");
     }
-    if (pages[mem >> PAGE_SHIFT] == NULL)
+    if (pages[mem >> Page::Page_Shift] == NULL)
       Throw(ObjectDoesntExist,"Page::ReadByte","Page is undefined");
 #endif
-    return pages[mem >> PAGE_SHIFT]->ReadByte(mem);
+    return pages[mem >> Page::Page_Shift]->ReadByte(mem);
   }
   //
   // Write to an address.
@@ -69,10 +69,10 @@ public:
     if (mem < 0 || mem > 0xffff) {
       Throw(OutOfRange,"Page::WriteByte","Address is invalid");
     }
-    if (pages[mem >> PAGE_SHIFT] == NULL)
+    if (pages[mem >> Page::Page_Shift] == NULL)
       Throw(ObjectDoesntExist,"Page::WriteByte","Page is undefined");
 #endif
-    pages[mem >> PAGE_SHIFT]->WriteByte(mem,val);
+    pages[mem >> Page::Page_Shift]->WriteByte(mem,val);
   } 
   //
   // Patch a ROM entry. This works only for ROM patches
@@ -82,10 +82,10 @@ public:
 #if CHECK_LEVEL > 1
     if (mem < 0 || mem > 0xffff) 
       Throw(OutOfRange,"Page::PatchByte","Address is invalid");
-    if (pages[mem >> PAGE_SHIFT] == NULL)
+    if (pages[mem >> Page::Page_Shift] == NULL)
       Throw(ObjectDoesntExist,"Page::PatchByte","Page is undefined");
 #endif
-    pages[mem >> PAGE_SHIFT]->PatchByte(mem,val);
+    pages[mem >> Page::Page_Shift]->PatchByte(mem,val);
   }
   //
   //
@@ -97,11 +97,11 @@ public:
 #if CHECK_LEVEL > 1
     if (mem < 0 || mem > 0xfffe) 
       Throw(OutOfRange,"Page::ReadWord","Address is invalid");
-    if (pages[mem >> PAGE_SHIFT] == NULL || pages[(mem+1) >> PAGE_SHIFT] == NULL)
+    if (pages[mem >> Page::Page_Shift] == NULL || pages[(mem+1) >> Page::Page_Shift] == NULL)
       Throw(ObjectDoesntExist,"Page::ReadWord","Page is undefined");
 #endif
-    data  = pages[mem     >> PAGE_SHIFT]->ReadByte(mem);
-    data |= UWORD(pages[(mem+1) >> PAGE_SHIFT]->ReadByte(mem+1)) << 8;
+    data  = pages[mem     >> Page::Page_Shift]->ReadByte(mem);
+    data |= UWORD(pages[(mem+1) >> Page::Page_Shift]->ReadByte(mem+1)) << 8;
     //
     return data;
   }
@@ -127,10 +127,10 @@ public:
     if (mem < 0 || mem > 0xffff) {
       Throw(OutOfRange,"Page::isIOSpace","Address is invalid");
     }
-    if (pages[mem >> PAGE_SHIFT] == NULL)
+    if (pages[mem >> Page::Page_Shift] == NULL)
       Throw(ObjectDoesntExist,"Page::isIOSpace","Page is undefined");
 #endif
-    return pages[mem >> PAGE_SHIFT]->isIOSpace(mem);
+    return pages[mem >> Page::Page_Shift]->isIOSpace(mem);
   }
 };
 ///

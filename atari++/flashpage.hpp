@@ -34,7 +34,7 @@ protected:
   //
   virtual UBYTE ComplexRead(ADR mem)
   {
-    UBYTE b = romimage[mem & ATARIPP_PAGE_MASK];
+    UBYTE b = romimage[mem & Page::Page_Mask];
     //
     if (parent->InterceptsRead()) {
       return parent->RomAreaRead(mem,b);
@@ -53,7 +53,7 @@ public:
   //
   // The constructor also constructs the memory here.
   FlashPage(class AmdChip *amd)
-    : romimage(new UBYTE[256]), parent(amd)
+    : romimage(new UBYTE[Page::Page_Length]), parent(amd)
   {
     // Ensure the data is "erased" in the flash ROM sense.
     Blank();
@@ -76,7 +76,7 @@ public:
   // Read a byte. Returns the byte read.
   UBYTE ReadByte(ADR mem)
   {
-    return romimage[mem & ATARIPP_PAGE_MASK];
+    return romimage[mem & Page::Page_Mask];
   }
   //
   // Write a byte to a page. Nothing happens here.
@@ -88,13 +88,13 @@ public:
   // all is 0xff. Writing data means setting bits to zero.
   void Blank(void)
   {
-    memset(romimage,255,256);
+    memset(romimage,255,Page::Page_Length);
   }
   //
   // Patch a byte into a FlashROM.
   virtual void PatchByte(ADR mem,UBYTE val)
   {
-    romimage[mem & ATARIPP_PAGE_MASK] = val;
+    romimage[mem & Page::Page_Mask] = val;
   }
 };
 ///

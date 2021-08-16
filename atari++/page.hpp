@@ -16,12 +16,6 @@
 #include "stdio.hpp"
 ///
 
-/// Defines
-#define ATARIPP_PAGE_MASK 0xff // mask out the page from an address
-#define PAGE_SHIFT 0x08 // shift to get the page index
-#define PAGE_LENGTH 0x100 // length of a page in bytes
-///
-
 /// Class Page
 // Defines a single page of memory or memory mapped IO
 class Page {
@@ -36,6 +30,13 @@ protected:
   virtual void  ComplexWrite(ADR mem,UBYTE value) = 0;
   //
 public:
+  //
+  // A couple of constants to ease access to pages.
+  enum {
+    Page_Mask   = 0xff, // mask out the page from an address
+    Page_Shift  = 8,    // shift to get the page index
+    Page_Length = 0x100
+  };
   //
   // Constructors and destructors. 
   Page(void)
@@ -59,7 +60,7 @@ public:
   UBYTE ReadByte(ADR mem)
   {
     if (memory) {
-      return memory[mem & ATARIPP_PAGE_MASK];
+      return memory[mem & Page_Mask];
     } else {
       return ComplexRead(mem);
     }
@@ -70,7 +71,7 @@ public:
   void WriteByte(ADR mem,UBYTE val)
   {
     if (memory) {
-      memory[mem & ATARIPP_PAGE_MASK] = val;
+      memory[mem & Page_Mask] = val;
     } else {
       ComplexWrite(mem,val);
     }

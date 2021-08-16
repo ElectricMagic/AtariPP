@@ -22,7 +22,6 @@
 ///
 
 /// Compiler workarounds
-
 #ifdef HAS_MEMBER_INIT
 #define INIT(a) = a
 #else
