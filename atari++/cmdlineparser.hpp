@@ -67,7 +67,7 @@ public:
   }
   //
   // Run an argument parser from the command line arguments
-  bool PreParseArgs(int argc,char **argv,const char *info);
+  bool PreParseArgs(int argc,const char* const* argv,const char *info);
   //
   // Run an argument parser from a configuration file
   bool PreParseArgs(FILE *file,const char *info);
