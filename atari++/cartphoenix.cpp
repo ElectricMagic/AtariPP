@@ -93,11 +93,11 @@ bool CartPhoenix::MapCart(class MMU *mmu)
     // Get the first bank and map it into 0xa000 to 0xbfff
     // 8K = 2^13
     if (Banks == 1) {
-      for(i=0xa000;i<0xc000;i+=Page::Page_Shift) {
+      for(i=0xa000;i<0xc000;i+=Page::Page_Length) {
 	mmu->MapPage(i,Rom+((i-0xa000)>>Page::Page_Shift));
       }
     } else {
-      for(i=0x8000;i<0xc000;i+=Page::Page_Shift) {
+      for(i=0x8000;i<0xc000;i+=Page::Page_Length) {
 	mmu->MapPage(i,Rom+((i-0x8000)>>Page::Page_Shift));
       }
     }
