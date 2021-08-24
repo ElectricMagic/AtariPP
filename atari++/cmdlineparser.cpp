@@ -269,7 +269,7 @@ void CmdLineParser::PrintError(const char *fmt,...)
 /// CmdLineParser::PreParseArgs
 // Run an argument parser from the command line arguments
 // This also filters for --help or -h or -help
-bool CmdLineParser::PreParseArgs(int argc,const char* const* argv,const char *info)
+bool CmdLineParser::PreParseArgs(int argc,const char *const *argv,const char *info)
 {
   struct Argument **last;
   //
@@ -285,7 +285,7 @@ bool CmdLineParser::PreParseArgs(int argc,const char* const* argv,const char *in
   argv++;
   while(argc > 0) {
     size_t len;
-    const char  *s = *argv; // source where to copy from
+    const char *s = *argv; // source where to copy from
     //
     // Get the length of the source.
     len = strlen(s);
