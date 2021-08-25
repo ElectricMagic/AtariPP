@@ -2,7 +2,7 @@
  **
  ** Atari++ emulator (c) 2002 THOR-Software, Thomas Richter
  **
- ** $Id: adrspace.hpp,v 1.21 2015/10/25 09:11:22 thor Exp $
+ ** $Id: adrspace.hpp,v 1.22 2021/08/16 10:31:01 thor Exp $
  **
  ** In this module: Definition of the complete 64K address space of the emulator
  **********************************************************************************/

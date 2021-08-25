@@ -2,7 +2,7 @@
  **
  ** Atari++ emulator (c) 2002 THOR-Software, Thomas Richter
  **
- ** $Id: flashpage.hpp,v 1.4 2015/10/25 09:11:23 thor Exp $
+ ** $Id: flashpage.hpp,v 1.5 2021/08/16 10:31:01 thor Exp $
  **
  ** In this module: Definition of a page of an AMD FlashROM
  **********************************************************************************/

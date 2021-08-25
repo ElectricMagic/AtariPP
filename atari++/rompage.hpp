@@ -2,7 +2,7 @@
  **
  ** Atari++ emulator (c) 2002 THOR-Software, Thomas Richter
  **
- ** $Id: rompage.hpp,v 1.11 2015/10/25 09:11:23 thor Exp $
+ ** $Id: rompage.hpp,v 1.12 2021/08/16 10:31:01 thor Exp $
  **
  ** In this module: Definition of a page of ROM
  **********************************************************************************/

@@ -1,8 +1,8 @@
 #***********************************************************************************
 #**
-#** Atari++ emulator (c) 2002-2011 THOR-Software, Thomas Richter
+#** Atari++ emulator (c) 2002-2021 THOR-Software, Thomas Richter
 #**
-#** $Id: configure.in,v 1.134 2021/08/16 10:31:01 thor Exp $
+#** $Id: configure.in,v 1.135 2021/08/25 10:17:14 thor Exp $
 #**
 #** In this module: autoconf script for atari++
 #**********************************************************************************/

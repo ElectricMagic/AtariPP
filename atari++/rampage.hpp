@@ -2,7 +2,7 @@
  **
  ** Atari++ emulator (c) 2002 THOR-Software, Thomas Richter
  **
- ** $Id: rampage.hpp,v 1.8 2015/05/21 18:52:42 thor Exp $
+ ** $Id: rampage.hpp,v 1.9 2021/08/16 10:31:01 thor Exp $
  **
  ** In this module: Definition of a page of memory
  **********************************************************************************/

@@ -2,7 +2,7 @@
  **
  ** Atari++ emulator (c) 2002 THOR-Software, Thomas Richter
  **
- ** $Id: cartphoenix.cpp,v 1.4 2021/08/16 10:31:01 thor Exp $
+ ** $Id: cartphoenix.cpp,v 1.5 2021/08/18 11:28:38 thor Exp $
  **
  ** In this module: The implementation of the Phoenix and Blizzard carts
  **********************************************************************************/
